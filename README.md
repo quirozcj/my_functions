@@ -10,4 +10,4 @@ def unstack_df(df):
         columns=['query']).reset_index()
         col_df = df_piv.columns.values[:].tolist()
     return pd.DataFrame(df_piv.iloc[:, :].values, columns=col_df)
-    ```
+```

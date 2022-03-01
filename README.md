@@ -11,8 +11,8 @@ def unstack_df(df):
 
 ### Filter columns by regex
 ```py
-def drop_columns_rex(df):
-    droped_df = df.set_index(['seqname', 'start', 'end']).drop(df.filter(regex='BW_').columns, axis=1)
+def drop_columns_rex(df, string):
+    droped_df = df.set_index(['seqname', 'start', 'end']).drop(df.filter(regex=string).columns, axis=1)
     return droped_df.reset_index()
 ```
 

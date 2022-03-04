@@ -29,3 +29,13 @@ def include_columns_list(df,sample_list):
     filter_df = df.set_index(['seqname', 'start', 'end']).filter(items=my_list, axis=1)
     return filter_df.reset_index()
 ```
+### Read part of a file by rows and columns & filter by unique:
+```py
+def get_unique(file):
+    file_df = pd.read_csv(file, delimiter='\t', nrows=200000, usecols=['chr','start','end','query','window'])
+    if len(file_df['query'].unique()) > 1:
+        unique_df = file_df.drop_duplicates(subset=['start','end','window'], keep='first')
+    else:
+        raise ValueError("less than one genotyped in DF")
+    return unique_df
+```

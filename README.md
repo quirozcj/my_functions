@@ -36,6 +36,6 @@ def get_unique(file):
     if len(file_df['query'].unique()) > 1:
         unique_df = file_df.drop_duplicates(subset=['start','end','window'], keep='first')
     else:
-        raise ValueError("less than one genotyped in DF")
+        raise ValueError("less than one genotype in DF")
     return unique_df
 ```

@@ -46,4 +46,4 @@ up_region = 5000
 def get_region(df, chromosome, down_region, up_region):
     region_df = df[(df['end'].between(down_region, up_region, inclusive="both")) & (df['chr'].str.contains(chromosome))]
     return region_df
-    
+``` 

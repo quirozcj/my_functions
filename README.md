@@ -39,3 +39,12 @@ def get_unique(file):
         raise ValueError("less than one genotype in DF")
     return unique_df
 ```
+### filter rows using between
+```py
+down_region = 1000
+up_region = 5000
+def get_region(df, chromosome, down_region, up_region):
+    region_df = df[(df['end'].between(down_region, up_region, inclusive="both")) & (df['chr'].str.contains(chromosome))]
+    return region_df
+    ```
+    

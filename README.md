@@ -9,6 +9,13 @@ def unstack_df(df):
     return pd.DataFrame(df_piv.iloc[:, :].values, columns=col_df)
 ```
 
+### Filter rows by list
+```py
+def select_genotypes(df,sample_list):
+    df_f = df[df['query'].isin(sample_list)]
+    return df_f
+```
+
 ### Filter columns by regex
 ```py
 def drop_columns_rex(df, string):

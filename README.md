@@ -1,5 +1,12 @@
 # my_functions
 
+### File to list
+```py
+def file_to_list(file):
+    file_l = pd.read_csv(file)['genotype'].tolist()
+    return file_l
+```
+
 ### Melt wide file
 ```py
 # id_vars: columns to keep

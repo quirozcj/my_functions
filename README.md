@@ -1,5 +1,18 @@
 # my_functions
-recicle_functions
+
+### Melt wide file
+```py
+# id_vars: columns to keep
+# value_vars: columns names to use its values
+# var_name: arbitrary name
+# value_name arbitrary name
+def melt_df(df):
+    df_m = pd.melt(df, id_vars=['seqname','start','end'],
+                   value_vars=df.columns[3:],
+                   var_name='query',
+                   value_name='variations')
+    return df_m
+```
 
 ### Convert long format files to wide
 ```py

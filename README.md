@@ -1,5 +1,16 @@
 # my_functions
 
+### Filter column by any value
+
+```py
+def filter_maximum(df, value):
+    df_idx = region_df.set_index(['seqname','start','end'])
+    df_max = df_idx.loc[:, (df_idx < value).any()].reset_index()
+    return df_max
+
+filter_df = filter_maximum(region_df, 30)
+```
+
 ### File to list
 ```py
 def file_to_list(file):

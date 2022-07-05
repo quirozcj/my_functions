@@ -3,6 +3,7 @@
 ### Make bed windows
 
 ```py
+from itertools import count
 window_size = 1000000
 chr_length = 676644357
 chr_id='chr4A__ari'

@@ -1,5 +1,30 @@
 # my_functions
 
+### Make bed windows
+
+```py
+window_size = 1000000
+chr_length = 676644357
+chr_id='chr4A__ari'
+
+def make_windows(length, size, chromosome):
+    start=[]
+    w_pos=1
+    for i in count(w_pos, size):
+        if i > length:
+            break
+        else:
+            start.append(w_pos)
+            w_pos += size
+    df = pd.DataFrame(start, columns=['start'])
+    df['end'] = df['start'] + (size-1)
+    df.insert(0, 'chr',chromosome)
+    return df
+    
+my_bed = make_windows(chr_length, window_size, chr_id)
+```
+
+
 ### Filter column by any value
 
 ```py

@@ -1,5 +1,19 @@
 # my_functions
 
+### Get chr size from file
+```tsv
+reference	chr	start	end
+arinalrfor	chr1A__ari	0	602900890
+arinalrfor	chr1B__ari	0	697493198
+```
+
+```py
+def chr_len(file, reference, chromosome):
+    len_df = pd.read_csv(file, delimiter='\t')
+    ref_df = len_df[(len_df['reference'] == reference) & len_df['chr'].str.contains(f'{chromosome}')].iloc[0][3]
+    return ref_df
+ ```
+
 ### Make bed windows
 
 ```py

@@ -12,7 +12,9 @@ def chr_len(file, reference, chromosome):
     len_df = pd.read_csv(file, delimiter='\t')
     ref_df = len_df[(len_df['reference'] == reference) & len_df['chr'].str.contains(f'{chromosome}')].iloc[0][3]
     return ref_df
- ```
+ 
+ chr_len = chr_len('chr_lenghts.tsv', 'arinalrfor', 'chr7A'
+```
 
 ### Make bed windows
 

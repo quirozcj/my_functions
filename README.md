@@ -1,5 +1,25 @@
 # my_functions
 
+### Map substring in a DF and insert at "2" column position
+```py
+names = {\
+        'WhJag':'jagger',
+        'WhAri':'arinalrfor',
+        'Whjul':'julius',
+        'Whlan':'lancer',
+        'WhLan':'landmark',
+        'Whmac':'mace',
+        'WhSYM':'sy_mattis',
+        'WhNor':'norin61',
+        'Whspe':'spelta',
+        'WhSta':'stanley'
+        }
+
+    new_col = df['seqname'].apply(lambda x: map_substring(x, names))
+    df.insert(loc=2, column='new_names', value=new_col)
+```
+
+
 ### Get chr size from file
 ```tsv
 reference	chr	start	end

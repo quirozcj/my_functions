@@ -2,6 +2,13 @@
 
 ### Map substring in a DF and insert at "2" column position
 ```py
+
+def map_substring(s, dict_map):
+    for key in dict_map.keys():
+        if key in s:
+            return dict_map[key]
+        return s
+
 names = {\
         'WhJag':'jagger',
         'WhAri':'arinalrfor',

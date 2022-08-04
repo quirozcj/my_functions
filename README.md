@@ -136,6 +136,14 @@ def include_columns_list(df,sample_list):
     filter_df = df.set_index(['seqname', 'start', 'end']).filter(items=my_list, axis=1)
     return filter_df.reset_index()
 ```
+
+### Filter columns by list and transpose back:
+```py
+def select_genotypes(df, sample_list):
+    df_f = df.T.filter(items=sample_list, axis=1).T
+    return df_f
+```
+
 ### Read part of a file by rows and columns & filter by unique:
 ```py
 def get_unique(file):

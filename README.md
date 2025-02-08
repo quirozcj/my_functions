@@ -1,5 +1,44 @@
 # my_functions
 
+### Combine multiple files column wise implemented for comand line:
+```py
+import pandas as pd
+import sys
+
+def main():
+    # Check if enough arguments are provided
+    if len(sys.argv) < 3:
+        print("Usage: python combine_files.py input1.csv input2.csv ... output.csv")
+        sys.exit(1)
+    
+    # Extract input files and output file from command line arguments
+    input_files = sys.argv[1:-1]
+    output_file = sys.argv[-1]
+    
+    # Read each input file into a DataFrame
+    dfs = []
+    for file in input_files:
+        try:
+            df = pd.read_csv(file)
+            dfs.append(df)
+        except FileNotFoundError:
+            print(f"Error: File '{file}' not found.")
+            sys.exit(1)
+    
+    # Combine all DataFrames column-wise
+    combined_df = pd.concat(dfs, axis=1)
+    
+    # Save the combined DataFrame to the output file
+    combined_df.to_csv(output_file, index=False)
+    print(f"Combined file saved as {output_file}")
+
+if __name__ == "__main__":
+    main()
+```
+
+```Handling Command Line Arguments: The script expects input files and an output file to be specified as command line arguments. The last argument is treated as the output file name, while all preceding arguments are considered input files.
+```
+
 ### Map substring in a DF and insert at "2" column position
 ```py
 

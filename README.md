@@ -1,5 +1,13 @@
 # my_functions
 
+### Remove duplicated index
+
+```py
+def drop_duplicated_index(df):
+    df = df.loc[~df.index.duplicated(),:].copy()
+    return df
+```
+
 ### Remove duplicated columns (by column names) and keep first
 
 ```py

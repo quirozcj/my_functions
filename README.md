@@ -1,5 +1,28 @@
 # my_functions
 
+### Remove duplicated columns (by column names) and keep first
+
+```py
+def drop_duplicated_columns(df):
+    df = df.loc[:,~df.columns.duplicated()].copy()
+    return df
+```
+
+### Remove rows by pattern
+
+```py
+def remove_rows_by_pattern(df, column, pattern, case=False, regex=True):
+
+    # Convert column to string type and check for pattern matches
+    mask = ~df[column].astype(str).str.contains(
+        pattern, 
+        case=case, 
+        regex=regex,
+        na=False
+    )
+    return df[mask]
+```
+
 ### Combine multiple files column wise implemented for comand line:
 ```py
 import pandas as pd

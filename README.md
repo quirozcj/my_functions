@@ -1,5 +1,42 @@
 # my_functions
 
+### Extract multiple rows in a file based on multiple names from a second file.
+
+```py
+import sys
+
+def extract_rows(data_file, names_file, output_file):
+    # Read names into a set (stripping whitespace)
+    with open(names_file, 'r') as nf:
+        names = {line.strip() for line in nf if line.strip()}
+    
+    # Open the input data file and output file
+    with open(data_file, 'r') as df, open(output_file, 'w') as of:
+        for line in df:
+            # Check if any name is found in the current row.
+            # This simple check sees if the name appears as a substring.
+            if any(name in line for name in names):
+                of.write(line)
+                
+if __name__ == '__main__':
+    if len(sys.argv) != 4:
+        print("Usage: python extract_rows.py <data_file> <names_file> <output_file>")
+        sys.exit(1)
+        
+    data_file = sys.argv[1]
+    names_file = sys.argv[2]
+    output_file = sys.argv[3]
+    
+    extract_rows(data_file, names_file, output_file)
+    print(f"Extraction complete. Results written to {output_file}")
+```
+#### Usage
+
+```sh
+python extract_rows.py data.txt names.txt output.txt
+```
+
+
 ### Remove duplicated index
 
 ```py

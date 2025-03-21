@@ -1,6 +1,6 @@
 # my_functions
 
-### Extract multiple rows in a file based on multiple names from a second file.
+### Extract multiple rows from a file based on multiple names from a second file.
 
 ```py
 import sys

@@ -1,6 +1,59 @@
 # my_functions
 
-### Extract multiple rows from a file based on multiple names from a second file.
+#### Extract Fasta sequences based on chr positions:
+
+```py
+from pyfaidx import Fasta
+import argparse
+from datetime import datetime
+
+startTime = datetime.now()
+
+def get_tartget_seq(reference, chromosome, start, end):
+	ref_fasta = Fasta(reference)
+	header = f'>{chromosome}_{start}:{end}'
+	fasta_txt = ref_fasta.get_seq(chromosome, int(start), int(end))
+	output_fasta =(header + '\n' + str(fasta_txt))
+	return output_fasta
+
+def parse_arguments():
+	parser = argparse.ArgumentParser()
+	parser.add_argument('-r', '--reference')
+	parser.add_argument('-c', '--chromosome')
+	parser.add_argument('-s', '--start', default=int)
+	parser.add_argument('-e', '--end', default=int)
+	parser.add_argument('-o', '--output')
+	args = parser.parse_args()
+	return args
+
+def main():
+	args = parse_arguments()
+
+	reference = args.reference
+	chromosome =  args.chromosome
+	start = args.start
+	end = args.end
+
+	out = get_tartget_seq(reference, chromosome, start, end)
+
+	with open(args.output, "w") as text_file:
+		text_file.write(out)
+
+if __name__ == '__main__':
+	main()
+```
+##### Usage:
+```sh
+singularity exec ~/tmp/quirozc/python3.img python3 $script_dir/get_target_seq.py \
+-r ${ref_dir}/${query}.fa \
+-c ${qr_chromosome} \
+-s ${start} \
+-e ${end} \
+-o ${out_dir}/${query}_${start}_${end}.fa
+```
+
+
+#### Extract multiple rows from a file based on multiple names from a second file.
 
 ```py
 import sys
